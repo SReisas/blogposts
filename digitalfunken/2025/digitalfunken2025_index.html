@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rückblick und Impulse – Digitalfunken@CAU 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--magenta:#C8007A;--magenta-pale:#fdf0f7;--magenta-mid:#f0c8e0;--grey-90:#1e1e1e;--grey-70:#444;--grey-50:#777;--grey-30:#b0b0b0;--grey-15:#dedede;--grey-08:#f0f0f0;--grey-04:#f7f7f7;--white:#fff;--warm:#faf8f6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"DM Sans",sans-serif;background:var(--warm);color:var(--grey-90);line-height:1.6;}
+.intro-section{background:var(--white);padding:36px 36px 32px;border-bottom:1px solid var(--grey-15);}
+.event-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);margin-bottom:14px;}
+.event-label::before{content:"";display:inline-block;width:24px;height:2px;background:var(--magenta);}
+.intro-title{font-family:"Lora",serif;font-size:26px;font-weight:600;line-height:1.25;color:var(--grey-90);margin-bottom:14px;max-width:660px;}
+.intro-title em{font-style:italic;color:var(--magenta);}
+.intro-body{font-size:14.5px;color:var(--grey-70);line-height:1.8;max-width:660px;font-weight:300;margin-bottom:24px;}
+.audience-selector{display:flex;max-width:500px;}
+.audience-btn{flex:1;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:500;padding:13px 20px;border:2px solid var(--grey-15);background:var(--white);color:var(--grey-50);cursor:pointer;transition:all .2s;text-align:center;}
+.audience-btn:first-child{border-right:1px solid var(--grey-15);}
+.audience-btn:nth-child(2){border-left:1px solid var(--grey-15);}
+.audience-btn .btn-label{display:block;font-size:10px;font-weight:400;color:var(--grey-30);margin-bottom:3px;letter-spacing:.1em;text-transform:uppercase;}
+.audience-btn .btn-main{font-size:14px;font-weight:600;}
+.audience-btn:hover,.audience-btn.active{border-color:var(--magenta);color:var(--magenta);}
+.audience-btn.active{background:var(--magenta);color:var(--white);}
+.audience-btn.active .btn-label{color:rgba(255,255,255,.7);}
+.audience-btn-alle{flex:0 0 auto;font-family:"DM Sans",sans-serif;font-size:12px;padding:13px 18px;border:2px solid var(--grey-15);border-left:none;background:var(--white);color:var(--grey-50);cursor:pointer;transition:all .2s;}
+.audience-btn-alle:hover{color:var(--magenta);border-color:var(--magenta);}
+.audience-btn-alle.active{background:var(--grey-90);border-color:var(--grey-90);color:var(--white);}
+.cards-section{padding:28px 36px 0;}
+.section-hint{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-30);margin-bottom:16px;}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:12px;}
+.card{background:var(--white);border:1px solid var(--grey-15);padding:22px 20px 18px;cursor:pointer;transition:all .2s;}
+.card:hover{border-color:var(--magenta);box-shadow:0 4px 16px rgba(200,0,122,.08);transform:translateY(-2px);}
+.card.active{border-color:var(--magenta);box-shadow:0 4px 16px rgba(200,0,122,.1);}
+.card.dimmed{opacity:.3;pointer-events:none;transform:none;box-shadow:none;}
+.card-eyebrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;}
+.card-num{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--grey-30);}
+.card-badges{display:flex;gap:4px;}
+.badge{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;}
+.badge-l{background:var(--magenta-pale);color:var(--magenta);}
+.badge-s{background:var(--grey-08);color:var(--grey-70);}
+.card-title{font-family:"Lora",serif;font-size:15px;font-weight:600;line-height:1.35;color:var(--grey-90);margin-bottom:8px;}
+.card-teaser{font-size:12.5px;color:var(--grey-50);line-height:1.65;font-weight:300;}
+.card-cta{margin-top:14px;font-size:12px;font-weight:500;color:var(--magenta);display:flex;align-items:center;gap:6px;transition:gap .15s;}
+.card:hover .card-cta{gap:10px;}
+.card-cta::after{content:"→";}
+.detail-wrap{padding:0 36px;margin-top:4px;}
+.detail-panel{display:none;background:var(--white);border:1px solid var(--magenta);border-top:3px solid var(--magenta);animation:reveal .22s ease;position:relative;}
+.detail-panel.visible{display:block;}
+@keyframes reveal{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+.detail-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:20px;color:var(--grey-30);cursor:pointer;line-height:1;transition:color .15s;z-index:2;}
+.detail-close:hover{color:var(--magenta);}
+.detail-layout{display:grid;grid-template-columns:1.2fr 1fr;}
+.detail-main{padding:30px 30px 30px 26px;border-right:1px solid var(--grey-08);}
+.detail-aside{padding:30px 26px;background:var(--grey-04);}
+.detail-kicker{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--magenta);margin-bottom:7px;}
+.detail-title{font-family:"Lora",serif;font-size:19px;font-weight:600;line-height:1.3;color:var(--grey-90);margin-bottom:14px;}
+.detail-narrative{font-size:13.5px;line-height:1.85;color:var(--grey-70);font-weight:300;}
+.detail-narrative p+p{margin-top:11px;}
+.detail-narrative strong{font-weight:600;color:var(--grey-90);}
+.audience-tabs{display:flex;margin-bottom:14px;border-bottom:2px solid var(--grey-15);}
+.atab{font-family:"DM Sans",sans-serif;font-size:12px;font-weight:500;padding:7px 14px 9px;background:none;border:none;color:var(--grey-50);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s;}
+.atab:hover{color:var(--magenta);}
+.atab.active{color:var(--magenta);border-bottom-color:var(--magenta);font-weight:600;}
+.atab-content{display:none;}
+.atab-content.visible{display:block;}
+.atab-text{font-size:13px;line-height:1.75;color:var(--grey-70);font-weight:300;margin-bottom:10px;}
+.impulse-list{list-style:none;}
+.impulse-list li{font-size:12.5px;color:var(--grey-70);line-height:1.6;padding:8px 0 8px 16px;border-bottom:1px solid var(--grey-15);position:relative;font-weight:300;}
+.impulse-list li:last-child{border-bottom:none;}
+.impulse-list li::before{content:"→";position:absolute;left:0;color:var(--magenta);font-size:11px;top:10px;}
+.impulse-list li strong{display:block;font-size:12px;font-weight:600;color:var(--grey-90);margin-bottom:2px;}
+.kompetenz-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;}
+.kb{background:var(--grey-04);border:1px solid var(--grey-15);padding:11px 13px;transition:border-color .15s;}
+.kb:hover{border-color:var(--magenta);}
+.kb-num{font-size:16px;font-weight:700;color:var(--magenta);line-height:1;margin-bottom:5px;}
+.kb-title{font-size:12px;font-weight:600;color:var(--grey-90);margin-bottom:3px;}
+.kb-text{font-size:11px;color:var(--grey-50);line-height:1.55;font-weight:300;}
+.ablauf{margin-top:14px;}
+.ablauf-step{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--grey-08);align-items:flex-start;}
+.ablauf-step:last-child{border-bottom:none;}
+.ablauf-num{flex:0 0 24px;height:24px;background:var(--magenta);color:var(--white);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.ablauf-text{font-size:12.5px;color:var(--grey-70);line-height:1.55;font-weight:300;}
+.ablauf-text strong{font-weight:600;color:var(--grey-90);display:block;margin-bottom:1px;}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;}
+.tool-card{background:var(--white);border:1px solid var(--grey-15);padding:12px 13px;transition:border-color .15s;}
+.tool-card:hover{border-color:var(--magenta);}
+.tool-icon{font-size:18px;margin-bottom:6px;line-height:1;}
+.tool-title{font-size:12px;font-weight:600;color:var(--grey-90);margin-bottom:4px;}
+.tool-text{font-size:11px;color:var(--grey-50);line-height:1.55;font-weight:300;}
+.meta-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;padding-top:14px;border-top:1px solid var(--grey-15);}
+.meta-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-30);margin-bottom:2px;}
+.meta-value{font-size:12px;color:var(--grey-70);}
+.detail-link{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:12px;font-weight:600;color:var(--magenta);text-decoration:none;border-bottom:1px solid var(--magenta-mid);padding-bottom:1px;transition:gap .15s;}
+.detail-link:hover{gap:12px;border-bottom-color:var(--magenta);}
+.detail-link::after{content:"→";}
+.detail-link+.detail-link{margin-left:16px;}
+.footer-section{padding:24px 36px 20px;margin-top:28px;border-top:1px solid var(--grey-15);display:flex;justify-content:space-between;align-items:center;background:var(--white);}
+.footer-text{font-size:11px;color:var(--grey-30);font-weight:300;}
+.footer-cau{font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--grey-30);}
+@media(max-width:640px){
+.intro-section,.cards-section,.detail-wrap,.footer-section{padding-left:16px;padding-right:16px;}
+.detail-layout{grid-template-columns:1fr;}
+.detail-main{border-right:none;border-bottom:1px solid var(--grey-08);}
+.audience-selector{flex-wrap:wrap;}
+.kompetenz-grid,.tool-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="intro-section">
+  <div class="event-label">Rückblick &amp; Impulse · Digitalfunken@CAU 2025</div>
+  <h1 class="intro-title">Rückblick und Impulse – <em>Digitalfunken@CAU 2025</em></h1>
+  <p class="intro-body">Die Digitalfunken@CAU 2025 hat gezeigt: Der produktive Umgang mit KI ist keine Frage einzelner Tools, sondern von Kompetenzen, Haltungen und konkreten Praxiserfahrungen. Sieben Themenbereiche – von Kompetenzmodellen über erprobte Methoden bis zu digitalen Infrastrukturen der CAU – bieten Impulse für Lehrende und Studierende. Wählen Sie Ihre Perspektive.</p>
+  <div class="audience-selector">
+    <button class="audience-btn" data-filter="lehrende" onclick="setFilter('lehrende',this)"><span class="btn-label">Ich bin</span><span class="btn-main">Lehrende/r</span></button>
+    <button class="audience-btn" data-filter="studierende" onclick="setFilter('studierende',this)"><span class="btn-label">Ich bin</span><span class="btn-main">Studierende/r</span></button>
+    <button class="audience-btn-alle active" data-filter="alle" onclick="setFilter('alle',this)">Alle</button>
+  </div>
+</div>
+
+<div class="cards-section">
+  <div class="section-hint" id="section-hint">7 Themenbereiche · Klicken zum Vertiefen</div>
+  <div class="cards-grid">
+    <div class="card" data-id="0" data-audience="beide" onclick="toggleDetail(this)">
+      <div class="card-eyebrow"><span class="card-num">01</span><div class="card-badges"><span class="badge badge-l">Lehrende</span><span class="badge badge-s">Studierende</span></div></div>
+      <div class="card-title">KI-Kompetenzen systematisch aufbauen</div>
+      <div class="card-teaser">Verstehen, Anwenden, Reflektieren, Mitgestalten: ein Kompetenzrahmen für KI in Lehre und Studium.</div>
+      <div class="card-cta">Vertiefen</div>
+    </div>
+    <div class="card" data-id="1" data-audience="lehrende" onclick="toggleDetail(this)">
+      <div class="card-eyebrow"><span class="card-num">02</span><div class="card-badges"><span class="badge badge-l">Lehrende</span></div></div>
+      <div class="card-title">KI als Werkzeug und Gegenstand in der Fachlehre</div>
+      <div class="card-teaser">Drei Good-Practice-Beispiele aus Theologie, Alter Geschichte und Elektrotechnik zeigen fachlich fundierte KI-Szenarien.</div>
+      <div class="card-cta">Vertiefen</div>
+    </div>
+    <div class="card" data-id="2" data-audience="beide" onclick="toggleDetail(this)">
+      <div class="card-eyebrow"><span class="card-num">03</span><div class="card-badges"><span class="badge badge-l">Lehrende</span><span class="badge badge-s">Studierende</span></div></div>
+      <div class="card-title">AI Challenge: KI und klassische Recherche im Vergleich</div>
+      <div class="card-teaser">Eine Methode, die KI-gestützte und klassische Wissensarbeit direkt gegenüberstellt – für kritische Reflexion im Seminar.</div>
+      <div class="card-cta">Vertiefen</div>
+    </div>
+    <div class="card" data-id="3" data-audience="studierende" onclick="toggleDetail(this)">
+      <div class="card-eyebrow"><span class="card-num">04</span><div class="card-badges"><span class="badge badge-s">Studierende</span></div></div>
+      <div class="card-title">KI als Lernpartner im Selbststudium</div>
+      <div class="card-teaser">Karteikarten, sokratische Gespräche, Wissenslücken sichtbar machen: KI methodisch statt abkürzend im Selbststudium nutzen.</div>
+      <div class="card-cta">Vertiefen</div>
+    </div>
+    <div class="card" data-id="4" data-audience="beide" onclick="toggleDetail(this)">
+      <div class="card-eyebrow"><span class="card-num">05</span><div class="card-badges"><span class="badge badge-l">Lehrende</span><span class="badge badge-s">Studierende</span></div></div>
+      <div class="card-title">Problembasiertes Lernen und offene Materialien</div>
+      <div class="card-teaser">Der Siebensprung als Methode für komplexe Lernszenarien – und wie offene Bildungsmaterialien dabei unterstützen.</div>
+      <div class="card-cta">Vertiefen</div>
+    </div>
+    <div class="card" data-id="5" data-audience="beide" onclick="toggleDetail(this)">
+      <div class="card-eyebrow"><span class="card-num">06</span><div class="card-badges"><span class="badge badge-l">Lehrende</span><span class="badge badge-s">Studierende</span></div></div>
+      <div class="card-title">OpenOLAT: Vier Werkzeuge für Lehre und Studium</div>
+      <div class="card-teaser">Übung, Peer Review, Themenbörse, Diagrammeditor: vier wenig bekannte Funktionen der CAU-Lernplattform im Überblick.</div>
+      <div class="card-cta">Vertiefen</div>
+    </div>
+    <div class="card" data-id="6" data-audience="studierende" onclick="toggleDetail(this)">
+      <div class="card-eyebrow"><span class="card-num">07</span><div class="card-badges"><span class="badge badge-s">Studierende</span></div></div>
+      <div class="card-title">Wissenschaftliches Schreiben – OpenOLAT-Kurs der UB</div>
+      <div class="card-teaser">Ein frei zugänglicher Kurs der Universitätsbibliothek für alle, die ins akademische Schreiben einsteigen oder eine Prüfungsleistung vorbereiten.</div>
+      <div class="card-cta">Vertiefen</div>
+    </div>
+  </div>
+</div>
+
+<div class="detail-wrap">
+
+<div class="detail-panel" id="detail-0">
+  <button class="detail-close" onclick="closeDetail()">×</button>
+  <div class="detail-layout">
+    <div class="detail-main">
+      <div class="detail-kicker">Thema 01</div>
+      <div class="detail-title">KI-Kompetenzen systematisch aufbauen</div>
+      <div class="detail-narrative">
+        <p>Der Einsatz von KI in Studium und Lehre wird häufig über einzelne Tools diskutiert. Ein zentraler Impuls der Digitalfunken@CAU 2025 bestand darin, diese Perspektive um einen <strong>kompetenzorientierten Rahmen</strong> zu erweitern.</p>
+        <p>Vorgestellt wurde das KI-Kompetenzmodell von Alles, Falck, Flick und Schulz – ursprünglich für schulische Kontexte entwickelt, gut auf die Hochschule übertragbar. Es unterscheidet vier ineinandergreifende Bereiche:</p>
+      </div>
+      <div class="kompetenz-grid">
+        <div class="kb"><div class="kb-num">01</div><div class="kb-title">Verstehen</div><div class="kb-text">Funktionsweise, Trainingsdaten, Fehlerquellen – KI-Ergebnisse fachlich einordnen und methodisch bewerten.</div></div>
+        <div class="kb"><div class="kb-num">02</div><div class="kb-title">Anwenden</div><div class="kb-text">Gezielter, reflektierter Einsatz für akademische Aufgaben – KI nicht nur bedienen, sondern steuern und evaluieren.</div></div>
+        <div class="kb"><div class="kb-num">03</div><div class="kb-title">Reflektieren</div><div class="kb-text">Ethische Fragen, Bias, gesellschaftliche Auswirkungen – KI-Output systematisch hinterfragen und Urteile begründen.</div></div>
+        <div class="kb"><div class="kb-num">04</div><div class="kb-title">Mitgestalten</div><div class="kb-text">Prompts, Workflows und Regelwerke aktiv entwickeln, dokumentieren und in fachliche Kontexte einbetten.</div></div>
+      </div>
+      <a class="detail-link" href="pdfs/DF2025_01_KI-Kompetenzmodell.pdf" target="_blank">Vertiefender Artikel (PDF)</a>
+    </div>
+    <div class="detail-aside">
+      <div class="audience-tabs">
+        <button class="atab active" onclick="switchTab(this,'tab-0-s')">Für Studierende</button>
+        <button class="atab" onclick="switchTab(this,'tab-0-l')">Für Lehrende</button>
+      </div>
+      <div class="atab-content" id="tab-0-l">
+        <div class="atab-text">Die vier Bereiche helfen, Lernziele und Prüfungsformate zu schärfen. Verbunden mit dem Constructive Alignment (Biggs) entsteht ein stimmiger Rahmen.</div>
+        <ul class="impulse-list">
+          <li><strong>Lernzielplanung</strong>Formulieren Sie Lernziele explizit entlang der vier Bereiche – das macht KI-bezogene Anforderungen für Studierende transparent.</li>
+          <li><strong>Prüfungsdesign</strong>Aufgaben, die Reflektieren oder Mitgestalten erfordern, sind schwerer durch reines KI-Output zu erfüllen.</li>
+          <li><strong>Niveaustufung</strong>Das Modell macht Abstufungen innerhalb einer Lehrveranstaltung sichtbar und planbar.</li>
+        </ul>
+      </div>
+      <div class="atab-content visible" id="tab-0-s">
+        <div class="atab-text">Das Modell lässt sich als persönliches Reflexionsraster nutzen: In welchen Bereichen haben Sie bereits Erfahrungen? Wo möchten Sie mehr Sicherheit gewinnen?</div>
+        <ul class="impulse-list">
+          <li><strong>Selbsteinschätzung</strong>Welche der vier Bereiche nutzen Sie bereits aktiv – und welche noch kaum?</li>
+          <li><strong>Lernstrategie</strong>Das Modell hilft, die eigene KI-Nutzung bewusster zu gestalten.</li>
+          <li><strong>Prüfungsanforderungen lesen</strong>Lernziele sind häufig an diesen Bereichen ausgerichtet – das Modell macht sie lesbar.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="detail-panel" id="detail-1">
+  <button class="detail-close" onclick="closeDetail()">×</button>
+  <div class="detail-layout">
+    <div class="detail-main">
+      <div class="detail-kicker">Thema 02</div>
+      <div class="detail-title">KI als Werkzeug und Gegenstand in der Fachlehre</div>
+      <div class="detail-narrative">
+        <p>Drei Lightning Talks aus der Lehrentwicklungswerkstatt zeigten: KI wirkt stets zweifach – als <strong>Werkzeug</strong> zur Exploration und als <strong>Gegenstand</strong>, dessen Grenzen selbst Lerninhalt sind.</p>
+      </div>
+      <ul class="impulse-list" style="margin-top:14px;">
+        <li><strong>Praktische Theologie – Dr. Saskia Eisenhardt</strong>Fachspezifische Chatbots als argumentative Sparringpartner in Ethikdiskussionen.</li>
+        <li><strong>Alte Geschichte – Dr. Hendrik Wagner</strong>KI-generierte Bilder werden historischen Quellen gegenübergestellt – sichtbar wird, wie stark KI an aktuelle Bildwelten anknüpft.</li>
+        <li><strong>Elektrotechnik – Prof. Dr. Jan Steinkühler</strong>Tutorbot mit Retrieval-Augmented Generation (RAG): eigene Modulinhalte als externe Wissensbasis einbinden.</li>
+      </ul>
+      <a class="detail-link" href="pdfs/DF2025_02_Lightning-Talks-KI.pdf" target="_blank">Vertiefender Artikel (PDF)</a>
+    </div>
+    <div class="detail-aside">
+      <div class="audience-tabs">
+        <button class="atab active" onclick="switchTab(this,'tab-1-s')">Für Studierende</button>
+        <button class="atab" onclick="switchTab(this,'tab-1-l')">Für Lehrende</button>
+      </div>
+      <div class="atab-content" id="tab-1-l">
+        <div class="atab-text">Alle drei Szenarien lassen sich auf andere Disziplinen übertragen. Ausgangsfrage: Welche fachlichen Denkprozesse sollen durch den KI-Einsatz sichtbar werden?</div>
+        <ul class="impulse-list">
+          <li><strong>Chatbot als Sparringspartner</strong>Überall einsetzbar, wo Argumentationsarbeit zentral ist.</li>
+          <li><strong>Bild-Quellen-Triangulation</strong>KI-Visualisierungen als Analysematerial für Quellenkritik.</li>
+          <li><strong>RAG-Konzepte</strong>Eigene Materialien als Wissensbasis einbinden – auch ohne Programmierkenntnisse.</li>
+        </ul>
+      </div>
+      <div class="atab-content visible" id="tab-1-s">
+        <div class="atab-text">KI ist kein neutrales Werkzeug. Es lohnt sich, KI-Outputs aktiv zu hinterfragen – nicht nur zu nutzen.</div>
+        <ul class="impulse-list">
+          <li><strong>Kritische Nutzung</strong>Chatbot-Antworten erfordern fachliche Einordnung, keine unkritische Übernahme.</li>
+          <li><strong>Bildkritik üben</strong>KI-Bilder reproduzieren Klischees – das sichtbar zu machen ist selbst eine Lernaufgabe.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="detail-panel" id="detail-2">
+  <button class="detail-close" onclick="closeDetail()">×</button>
+  <div class="detail-layout">
+    <div class="detail-main">
+      <div class="detail-kicker">Thema 03</div>
+      <div class="detail-title">AI Challenge: KI und klassische Recherche im direkten Vergleich</div>
+      <div class="detail-narrative">
+        <p>Die AI Challenge macht erfahrbar: Wie gut sind KI-Tools tatsächlich für wissenschaftliches Arbeiten? Zwei Gruppen bearbeiten dieselbe Aufgabe – eine mit KI, eine mit klassischer Recherche.</p>
+        <p>Die Methode eignet sich besonders für den <strong>Seminarauftakt</strong>: Sie aktiviert Vorwissen und schafft eine Vertrauensbasis für den Umgang mit KI im Seminar.</p>
+      </div>
+      <div class="meta-row">
+        <div><div class="meta-label">Dauer</div><div class="meta-value">ca. 180 Min.</div></div>
+        <div><div class="meta-label">Gruppengröße</div><div class="meta-value">ab 4 Personen</div></div>
+        <div><div class="meta-label">Phase</div><div class="meta-value">Orientierung/Reflexion</div></div>
+        <div><div class="meta-label">Online/hybrid</div><div class="meta-value">geeignet</div></div>
+      </div>
+      <a class="detail-link" href="pdfs/DF2025_03_AI-Challenge-Methode.pdf" target="_blank">Vollständige Methodenbeschreibung (PDF)</a>
+    </div>
+    <div class="detail-aside">
+      <div class="audience-tabs">
+        <button class="atab active" onclick="switchTab(this,'tab-2-s')">Für Studierende</button>
+        <button class="atab" onclick="switchTab(this,'tab-2-l')">Für Lehrende</button>
+      </div>
+      <div class="atab-content" id="tab-2-l">
+        <div class="atab-text">Der Ablauf in vier Phasen:</div>
+        <div class="ablauf">
+          <div class="ablauf-step"><div class="ablauf-num">1</div><div class="ablauf-text"><strong>Themenfindung (45 Min.)</strong>Zwei Gruppen entwickeln je eine anspruchsvolle Transferaufgabe füreinander.</div></div>
+          <div class="ablauf-step"><div class="ablauf-num">2</div><div class="ablauf-text"><strong>Bearbeitung (80 Min.)</strong>Gruppe A: klassische Recherche. Gruppe B: KI-Tools nach Wahl.</div></div>
+          <div class="ablauf-step"><div class="ablauf-num">3</div><div class="ablauf-text"><strong>Bewertung (20 Min.)</strong>Die aufgebende Gruppe bewertet die Lösung der anderen nach Korrektheit und Transferleistung.</div></div>
+          <div class="ablauf-step"><div class="ablauf-num">4</div><div class="ablauf-text"><strong>Diskussion (20 Min.)</strong>Was konnte KI besser, was schlechter? Was bedeutet das für die Fachkultur?</div></div>
+        </div>
+      </div>
+      <div class="atab-content visible" id="tab-2-s">
+        <div class="atab-text">Die AI Challenge macht spürbar, was KI-Tools tatsächlich können – wertvoller als jede abstrakte Diskussion.</div>
+        <ul class="impulse-list">
+          <li><strong>Eigene Erfahrung</strong>Direkter Vergleich zeigt konkret: Für welche Aufgaben ist KI nützlich, für welche nicht?</li>
+          <li><strong>Fachkulturelle Reflexion</strong>KI-Tools funktionieren je nach Disziplin sehr unterschiedlich.</li>
+          <li><strong>Vertrauensbasis</strong>Die gemeinsame Erfahrung öffnet das Gespräch über KI im Seminar.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="detail-panel" id="detail-3">
+  <button class="detail-close" onclick="closeDetail()">×</button>
+  <div class="detail-layout">
+    <div class="detail-main">
+      <div class="detail-kicker">Thema 04</div>
+      <div class="detail-title">KI als Lernpartner im Selbststudium</div>
+      <div class="detail-narrative">
+        <p>Viele Studierende nutzen KI-Tools bereits aktiv. Der Workshop von Tom Hölting (TU Darmstadt) zeigte, wie diese Erfahrungen methodisch vertieft werden können.</p>
+        <p>Der Unterschied liegt in der Haltung: <strong>KI nicht als Abkürzung, sondern als Gegenüber</strong>, das herausfordert und Wissenslücken sichtbar macht.</p>
+      </div>
+      <a class="detail-link" href="pdfs/DF2025_04_KI-Lernpartner-Selbststudium.pdf" target="_blank">Vertiefender Artikel (PDF)</a>
+    </div>
+    <div class="detail-aside">
+      <div class="audience-tabs">
+        <button class="atab active" onclick="switchTab(this,'tab-3-s')">Für Studierende</button>
+        <button class="atab" onclick="switchTab(this,'tab-3-l')">Für Lehrende</button>
+      </div>
+      <div class="atab-content visible" id="tab-3-s">
+        <div class="atab-text">Drei konkrete Einstiegspunkte:</div>
+        <ul class="impulse-list">
+          <li><strong>Sokratisches Gespräch</strong>Lernfragen formulieren, LLM durch Gegenfragen führen lassen – ohne direkte Antworten.</li>
+          <li><strong>Wissenslücken aufdecken</strong>Konzept in eigenen Worten erklären, LLM bittet um Unklarheiten und Lücken.</li>
+          <li><strong>Prüfungsfragen generieren</strong>Fragen auf verschiedenen Niveaus erstellen lassen, dann ohne Hilfsmittel beantworten.</li>
+        </ul>
+      </div>
+      <div class="atab-content" id="tab-3-l">
+        <div class="atab-text">Selbstlernszenarien mit KI lassen sich als expliziter Lernauftrag integrieren.</div>
+        <ul class="impulse-list">
+          <li><strong>Lernauftrag gestalten</strong>Studierende dokumentieren KI-Einsatz im Selbststudium und reflektieren den eigenen Lernprozess.</li>
+          <li><strong>Metakognition fördern</strong>KI als Lernpartner statt Antwortmaschine fördert Selbstregulation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="detail-panel" id="detail-4">
+  <button class="detail-close" onclick="closeDetail()">×</button>
+  <div class="detail-layout">
+    <div class="detail-main">
+      <div class="detail-kicker">Thema 05</div>
+      <div class="detail-title">Problembasiertes Lernen und offene Bildungsmaterialien</div>
+      <div class="detail-narrative">
+        <p>PBL stellt eine alltagsrelevante Problemsituation an den Anfang. Der <strong>Siebensprung</strong> (Weber, 2014) gibt Struktur: von der Begriffsklärung über Problemanalyse bis zum Wissensaustausch.</p>
+        <p>PBL erfordert Ambiguitätstoleranz auf beiden Seiten. KI kann als Lernbuddy in der Recherchephase Überkomplexität bewältigbar machen.</p>
+      </div>
+      <a class="detail-link" href="pdfs/DF2025_05_Problembasiertes-Lernen-OER.pdf" target="_blank">Vertiefender Artikel (PDF)</a>
+      <a class="detail-link" href="https://oer.uni-kiel.de/" target="_blank">Materialien auf OER.CAU</a>
+    </div>
+    <div class="detail-aside">
+      <div class="audience-tabs">
+        <button class="atab active" onclick="switchTab(this,'tab-4-s')">Für Studierende</button>
+        <button class="atab" onclick="switchTab(this,'tab-4-l')">Für Lehrende</button>
+      </div>
+      <div class="atab-content" id="tab-4-l">
+        <div class="atab-text">PBL beginnt mit der Problemaufgabe der Lehrperson: alltagsrelevant, fachlich verankert, offen genug für verschiedene Lösungswege.</div>
+        <ul class="impulse-list">
+          <li><strong>Canvas auf OER.CAU</strong>Entwicklungsleitfragen für die eigene Disziplin stehen frei zur Verfügung.</li>
+          <li><strong>KI als Lernbuddy</strong>Mehrstufige Prompts leiten durch die Recherchephase, ohne Ergebnisse vorwegzunehmen.</li>
+          <li><strong>OER teilen</strong>Materialien auf OER.CAU veröffentlichen – was man teilt, kommt vielfach zurück.</li>
+        </ul>
+      </div>
+      <div class="atab-content visible" id="tab-4-s">
+        <div class="atab-text">PBL aktiviert Vorwissen und macht Wissenslücken explizit. Der Siebensprung gibt Struktur ohne vorwegzunehmen.</div>
+        <ul class="impulse-list">
+          <li><strong>Eigenverantwortung</strong>Lernfragen selbst formulieren ist der Kern der Methode.</li>
+          <li><strong>Gruppenarbeit</strong>Divergierende Perspektiven sind keine Schwäche, sondern Ressource.</li>
+          <li><strong>KI einsetzen</strong>In der Recherchephase nützlich – Quellen immer selbst prüfen.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="detail-panel" id="detail-5">
+  <button class="detail-close" onclick="closeDetail()">×</button>
+  <div class="detail-layout">
+    <div class="detail-main">
+      <div class="detail-kicker">Thema 06</div>
+      <div class="detail-title">OpenOLAT: Vier Werkzeuge für Lehre und Studium</div>
+      <div class="detail-narrative">
+        <p>Vier Werkzeuge von OpenOLAT bieten didaktisches Potenzial, das im Alltag oft ungenutzt bleibt.</p>
+      </div>
+      <div class="tool-grid">
+        <div class="tool-card"><div class="tool-icon">🃏</div><div class="tool-title">Übung (Karteikarten)</div><div class="tool-text">Digitales Leitner-System mit automatischer Priorisierung von Problemfragen.</div></div>
+        <div class="tool-card"><div class="tool-icon">🔄</div><div class="tool-title">Peer Review</div><div class="tool-text">Gegenseitige Bewertung von Arbeiten – fördert Argumentationskompetenz und kritische Reflexion.</div></div>
+        <div class="tool-card"><div class="tool-icon">⚖️</div><div class="tool-title">Themenbörse</div><div class="tool-text">Faire, prioritätsbasierte Vergabe von Referatsthemen – unabhängig von Verfügbarkeit.</div></div>
+        <div class="tool-card"><div class="tool-icon">🗂️</div><div class="tool-title">Diagrammeditor</div><div class="tool-text">Ablaufdiagramme, Mindmaps und kollaborative Whiteboards direkt in OpenOLAT.</div></div>
+      </div>
+      <a class="detail-link" href="pdfs/DF2025_06_OpenOLAT-Werkzeuge.pdf" target="_blank">Vertiefender Artikel (PDF)</a>
+    </div>
+    <div class="detail-aside">
+      <div class="audience-tabs">
+        <button class="atab active" onclick="switchTab(this,'tab-5-s')">Für Studierende</button>
+        <button class="atab" onclick="switchTab(this,'tab-5-l')">Für Lehrende</button>
+      </div>
+      <div class="atab-content" id="tab-5-l">
+        <div class="atab-text">Alle vier Werkzeuge lassen sich ohne Programmierkenntnisse in Kurse integrieren.</div>
+        <ul class="impulse-list">
+          <li><strong>Übung</strong>Fragensets erstellen oder an Hilfskräfte delegieren. Geteilte Fragen von Kolleg*innen einbinden.</li>
+          <li><strong>Peer Review</strong>Kriterien gemeinsam besprechen vor dem Start – verbessert die Qualität der Bewertungen deutlich.</li>
+          <li><strong>Themenbörse</strong>Eliminiert das Windhundprinzip vollständig, geringer Verwaltungsaufwand.</li>
+          <li><strong>Diagrammeditor</strong>Als kollaboratives Whiteboard nutzbar – bei großen Gruppen auf stabile Verbindung achten.</li>
+        </ul>
+      </div>
+      <div class="atab-content visible" id="tab-5-s">
+        <div class="atab-text">Diese Werkzeuge begegnen Ihnen möglicherweise bereits in Lehrveranstaltungen.</div>
+        <ul class="impulse-list">
+          <li><strong>Übung</strong>Eigene Fragensets zusammenstellen – ideal für die Prüfungsvorbereitung.</li>
+          <li><strong>Peer Review</strong>Fremde Arbeiten bewerten schärft das eigene Urteilsvermögen.</li>
+          <li><strong>Diagrammeditor</strong>Mindmaps für die Prüfungsvorbereitung direkt in OpenOLAT erstellen.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="detail-panel" id="detail-6">
+  <button class="detail-close" onclick="closeDetail()">×</button>
+  <div class="detail-layout">
+    <div class="detail-main">
+      <div class="detail-kicker">Thema 07</div>
+      <div class="detail-title">Wissenschaftliches Schreiben – OpenOLAT-Kurs der Universitätsbibliothek</div>
+      <div class="detail-narrative">
+        <p>Die Zentrale Universitätsbibliothek bietet einen frei zugänglichen Kurs für Studierende aller Fächer an – von der ersten Hausarbeit bis zur Bachelorarbeit.</p>
+        <p>Bei Fragen: Dr. Julia Müller · <a href="/cdn-cgi/l/email-protection#83e9eef6e6efefe6f1c3f6e1adf6edeaaee8eae6efade7e6" style="color:var(--magenta);text-decoration:none;"><span class="__cf_email__" data-cfemail="a4cec9d1c1c8c8c1d6e4d1c68ad1cacd89cfcdc1c88ac0c1">[email&#160;protected]</span></a></p>
+      </div>
+      <a class="detail-link" href="https://lms.uni-kiel.de/auth/RepositoryEntry/5370183871/CourseNode/108187260963987" target="_blank">Zum OpenOLAT-Kurs</a>
+    </div>
+    <div class="detail-aside">
+      <div class="audience-tabs">
+        <button class="atab active" onclick="switchTab(this,'tab-6-s')">Für Studierende</button>
+        <button class="atab" onclick="switchTab(this,'tab-6-l')">Für Lehrende</button>
+      </div>
+      <div class="atab-content visible" id="tab-6-s">
+        <div class="atab-text">Ohne Anmeldung zugänglich, jederzeit startbar – studiengangsunabhängig.</div>
+        <ul class="impulse-list">
+          <li><strong>Grundlagen des akademischen Schreibens</strong>Aufbau, Argumentation, Zitierweisen, wissenschaftliche Sprache.</li>
+          <li><strong>Worksheets und Checklisten</strong>Von der ersten Idee bis zur Abgabe.</li>
+          <li><strong>Beratungsangebote</strong>Hinweise auf persönliche Beratung an der CAU.</li>
+        </ul>
+      </div>
+      <div class="atab-content" id="tab-6-l">
+        <div class="atab-text">Einzelne Module lassen sich gezielt in Lehrveranstaltungen einbinden.</div>
+        <ul class="impulse-list">
+          <li><strong>Tutorien</strong>Strukturierte Grundlage für schreibbegleitende Tutorien.</li>
+          <li><strong>Weiterempfehlung</strong>Link direkt in OpenOLAT-Kurse als Ressource einbinden.</li>
+          <li><strong>Kontakt</strong>Dr. Julia Müller für Rückfragen und Kooperationen.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer-section">
+  <div class="footer-text">Referat Lehrentwicklung · Christian-Albrechts-Universität zu Kiel · 2025</div>
+  <div class="footer-cau">CAU KIEL</div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+let activeId=null;
+function setFilter(filter,btn){
+  document.querySelectorAll(".audience-btn,.audience-btn-alle").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  closeDetail();
+  let n=0;
+  document.querySelectorAll(".card").forEach(card=>{
+    const a=card.dataset.audience;
+    const show=filter==="alle"||a==="beide"||a===filter;
+    card.classList.toggle("dimmed",!show);
+    if(show)n++;
+  });
+  const h=document.getElementById("section-hint");
+  if(filter==="lehrende")h.textContent=n+" Themenbereiche für Lehrende · Klicken zum Vertiefen";
+  else if(filter==="studierende")h.textContent=n+" Themenbereiche für Studierende · Klicken zum Vertiefen";
+  else h.textContent="7 Themenbereiche · Klicken zum Vertiefen";
+}
+function toggleDetail(card){
+  const id=card.dataset.id;
+  if(activeId===id){closeDetail();return;}
+  document.querySelectorAll(".card").forEach(c=>c.classList.remove("active"));
+  document.querySelectorAll(".detail-panel").forEach(p=>p.classList.remove("visible"));
+  card.classList.add("active");
+  const panel=document.getElementById("detail-"+id);
+  panel.classList.add("visible");
+  activeId=id;
+  setTimeout(()=>panel.scrollIntoView({behavior:"smooth",block:"nearest"}),60);
+}
+function closeDetail(){
+  document.querySelectorAll(".card").forEach(c=>c.classList.remove("active"));
+  document.querySelectorAll(".detail-panel").forEach(p=>p.classList.remove("visible"));
+  activeId=null;
+}
+function switchTab(btn,contentId){
+  const panel=btn.closest(".detail-panel");
+  panel.querySelectorAll(".atab").forEach(t=>t.classList.remove("active"));
+  panel.querySelectorAll(".atab-content").forEach(c=>c.classList.remove("visible"));
+  btn.classList.add("active");
+  document.getElementById(contentId).classList.add("visible");
+}
+</script>
+</body>
+</html>
